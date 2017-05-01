@@ -1,0 +1,31 @@
+﻿body {
+    background-color:#eee;
+
+}
+
+.MyItem {
+    color: lightgray;
+    padding: 20px;
+    border: 5px solid #eee;
+    transition: all 300ms ease-in-out;
+}
+
+    .MyItem:hover {
+        color: white;
+        transform: scale(0.98);
+    }
+
+a{
+    color:black; 
+    transition:all 300ms ease-in-out;
+}
+
+a:hover{
+      
+}
+
+.btn{
+    border-radius:0px ;
+    border:none;
+}
+ 

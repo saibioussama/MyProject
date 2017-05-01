@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Project </title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+</head>
+<body  style="height:100%">
+    @if (ViewBag.Title !="Home")
+    {
+        <div class="navbar navbar-inverse navbar-fixed-top" style="color:black;background-color:whitesmoke;border:none;" >
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("My Project ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav pull-right ">
+                        <li>@Html.ActionLink("Employes", "index", "Employes")</li>
+                        <li>@Html.ActionLink("Projects ", "index", "Projets")</li>
+                        <li>@Html.ActionLink("Participations", "index", "Participations")</li>
+                        <li>@Html.ActionLink("departements", "index", "departements")</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div class="" style="height:100%;padding-left:100px;padding-right:100px;padding-bottom:50px;">
+        @RenderBody()  
+        
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("scripts",false)
+</body>
+</html>

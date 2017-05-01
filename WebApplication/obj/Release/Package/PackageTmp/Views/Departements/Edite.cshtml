@@ -1,0 +1,43 @@
+﻿@model DAL.Departement
+
+ @{
+     ViewBag.Title = "Edite";
+}
+
+<h2>Edite</h2>
+
+@using (Html.BeginForm())
+{
+  
+    <div class="form-horizontal">
+        <h4>Departement</h4>
+        <hr />
+        <div class="form-group">
+           <label for="NumDept" class = "control-label col-md-2" >Numero departemet :</label>
+            <div class="col-md-10">
+                <h4>@Model.NumDept</h4>
+                <input type="hidden"  name="NumDept" id="NumDept" class="form-control" value="@Model.NumDept" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="NomDept" class = "control-label col-md-2" >Name Departement :</label>
+            <div class="col-md-10">
+                <input type="text" name="NomDept" id="NomDept" class="form-control" value="@Model.NomDept"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Lieu" class = "control-label col-md-2" >Lieu :</label>
+            <div class="col-md-10">
+                <input type="text" name="Lieu" id="Lieu" class="form-control" value="@Model.Lieu"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+} 

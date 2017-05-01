@@ -1,0 +1,102 @@
+﻿@model List<DAL.Employe>
+@{
+    ViewBag.Title = "Employes";
+}
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<br />
+<a href="@Url.Action("Create","Employes")" class="btn btn-default pull-right"> Add new Employe ...</a>
+<br />
+<h2>All employes :</h2>
+<br />
+<table class="table table-hover table-bordered " style="background-color:white;">
+    <thead>
+    <tr>
+        <th>
+            Matricule
+        </th>
+        <th>
+            Nom Employe
+        </th>
+        <th>
+            Poste
+        </th>
+        <th>
+            Date Emb
+        </th>
+        <th>
+            Employe superieur
+        </th>
+        <th>
+            Comm
+        </th>
+        <th>
+            Salaire
+        </th>
+        <th>
+            Departement
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(p => item.Matr)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.NomE)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.Poste)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.DateEmb)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.Emp_Sup.NomE)
+                    @if (item.Emp_Sup.Matr != 0)
+                    {<br />
+                    <a href="@Url.Action("Details","Employes",new { id = @item.Emp_Sup.Matr})" class="btn btn-info" target="_blank">Details</a>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.Comm)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.Salaire)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item._Departement.NomDept) <br />
+                    <a href="@Url.Action("Details","Departements",new { id = @item._Departement.NumDept})" class="btn btn-info" target="_blank">Details</a>
+                </td>
+                <td>
+                    <a href="@Url.Action("Edite", "Employes", new { id = item.Matr })" class="btn btn-success">Edite</a>
+                    <a href="@Url.Action("Delete", "Employes", new { id = item.Matr })" class="btn btn-danger">Delete</a>
+                    <a href="@Url.Action("Details", "Employes", new { id = item.Matr })" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+ 
+
+@section scripts{
+
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+
+}

@@ -1,0 +1,103 @@
+﻿@model DAL.Employe
+ @{
+     ViewBag.Title = "Edite";
+}
+
+
+<h2>Edite</h2>
+
+@using (Html.BeginForm())
+{
+      
+    <div class="form-horizontal">
+        <h4>Employe</h4>
+        <hr />
+         
+        <div class="form-group">
+            <label for="Matr" class = "control-label col-md-2" >Matricule :</label>
+            <div class="col-md-10">
+                <h4>@Model.Matr</h4>
+                <input type="hidden" name="Matr" id="Matr" value="@Model.Matr"   class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+           <label for="NomE" class = "control-label col-md-2" >Name :</label>
+            <div class="col-md-10">
+                <input type="text" name="NomE" id="NomE" class="form-control" value="@Model.NomE"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Emp_Sup.Matr" class = "control-label col-md-2" >Employe Superieur :</label>
+            <div class="col-md-10">
+               <select name="Emp_Sup.Matr" class="form-control" >
+                   @foreach (var item in DAL.Employe.Employes())
+                   {
+                       if (item.Matr == Model.Emp_Sup.Matr)
+                       {
+                        <option selected="selected">@item.Matr</option>
+                       }
+                       else
+                       {
+                        <option>@item.Matr</option>
+                       }
+                   }
+               </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Poste" class = "control-label col-md-2" >Poste :</label>
+            <div class="col-md-10">
+                <input type="text" name="Poste" id="Poste" class="form-control" value="@Model.Poste"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="DateEmb" class = "control-label col-md-2" >Date Embauche : </label>
+            <div class="col-md-10">
+                <input type="text" name="DateEmb" id="DateEmb" class="form-control" value="@Model.DateEmb"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Salaire" class = "control-label col-md-2" >Salaire :</label>
+            <div class="col-md-10">
+                <input type="number" name="Salaire" id="Salaire" class="form-control" value="@Model.Salaire"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Comm" class = "control-label col-md-2" >Comm :</label>
+            <div class="col-md-10">
+                <input type="number" name="Comm" id="Comm" class="form-control" value="@Model.Comm"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="_Departement.NumDept" class = "control-label col-md-2" >Departement :</label>
+            <div class="col-md-10">
+                <select name="_Departement.NumDept" class="form-control">
+                    @foreach (var item in DAL.Departement.Departements())
+                    {
+                        if (item.NumDept == Model._Departement.NumDept)
+                        {
+                            <option selected="selected">@item.NumDept</option>
+                        }
+                        else
+                        {
+                            <option>@item.NumDept</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

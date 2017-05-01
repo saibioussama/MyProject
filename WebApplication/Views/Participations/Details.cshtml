@@ -1,0 +1,66 @@
+﻿@model DAL.Participation
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+
+    <div style="background:white;margin-top:100px;" class="row">
+
+        <span style="font-family:'Segoe MDL2 Assets';height:150px;width:150px;border-radius:50%;text-align:center;font-size:80px;position:absolute;top:110px;left:40px;background-color:white;border:10px solid #eee;color:gray;">
+            
+        </span>
+        <div class="col-md-10 col-md-offset-2" style="padding:20px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Id participation  :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Id</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Nom Employe :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model._Employe.NomE</i></b></h4>
+                    <br />
+                    <a href="@Url.Action("Details","Employes",new { id = Model._Employe.Matr})" class="btn btn-info" target="_blank">Details</a>
+                </div>
+            </div>
+            <hr />
+              
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Nom projet :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model._Projet.NomP</i></b></h4>
+
+                    <br />
+                    <a href="@Url.Action("Details","Projets",new { id = Model._Projet.CodeP})" class="btn btn-info" target="_blank">Details</a>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Fonction :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Fonction</i></b></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />
+<div style="width:100%;">
+    <a href="@Url.Action("Edite","Participations",new { id = Model.Id})" style="width:50%;" class="btn btn-primary btn-lg pull-left">Edite </a>
+    <a href="@Url.Action("Delete","participations",new { id = Model.Id})" style="width:50%;" class="btn btn-info
+btn-lg pull-right">Delete</a>
+</div>
+
+ 

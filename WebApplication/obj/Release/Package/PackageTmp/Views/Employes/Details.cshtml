@@ -1,0 +1,175 @@
+﻿@model DAL.Employe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div>
+
+    <div style="background:white;margin-top:100px;margin-bottom:50px;" class="row">
+
+        <span style="font-family:'Segoe MDL2 Assets';height:150px;width:150px;border-radius:50%;text-align:center;font-size:80px;position:absolute;top:110px;left:40px;background-color:white;border:10px solid #eee;color:gray;">
+            
+        </span>
+        <div class="col-md-10 col-md-offset-2" style="padding:20px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Matricule :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Matr</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Nom Employe :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.NomE</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Poste :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Poste</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Salaire :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Salaire</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Employe supérieur :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Emp_Sup.NomE</i></b></h4>
+                    <br />
+                    @if (Model.Emp_Sup.Matr != 0)
+                    {
+                    <a href="@Url.Action("details","Employes",new {id = Model.Emp_Sup.Matr })" class="btn btn-info" target="_blank">Details</a>
+                    }
+                    else
+                    {
+                    <h4>n'a pas employe superieur</h4>
+                    }
+                </div>
+            </div>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Comm :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Comm</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Nom departement :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model._Departement.NomDept</i></b></h4>
+                    <br />
+                    <a href="@Url.Action("Details","Departements",new { id = Model._Departement.NumDept})" class="btn btn-info" target="_blank">Details</a>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Date embauche :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.DateEmb</i></b></h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div align="center" style="background-color:white;margin:10px;margin-bottom:50px;padding-bottom:50px;">
+
+        <div style="padding:20px;background-color:whitesmoke; margin-bottom:50px;color:gray;">
+            <h1><b><i>Particiaptions</i></b></h1>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1">
+                <h4>Id :</h4>
+            </div>
+
+            <div class="col-md-3">
+                <h4>Nom employe :</h4>
+            </div>
+
+            <div class="col-md-3">
+                <h4>Nom projet :</h4>
+            </div>
+
+            <div class="col-md-3">
+                <h4>Fonction :</h4>
+            </div>
+            <div class="col-md-2">
+                
+            </div>
+        </div>
+        <hr />
+        @{ 
+            bool v = false;
+        }
+        @foreach (var item in DAL.Participation.Participations())
+        {
+            if (item._Employe.Matr == Model.Matr)
+            {
+                v = true;
+                <div class="row">
+                    <div class="col-md-1">
+                        <h4><b>@item.Id</b></h4>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><b>@item._Employe.NomE</b></h4>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><b>@item._Projet.NomP</b></h4>
+                    </div>
+
+                    <div class="col-md-3">
+                        <h4><b>@item.Fonction</b></h4>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="@Url.Action("details","Participations", new { id=item.Id})" class="btn btn-info">Details</a>
+                    </div>
+                </div>
+            }
+        }
+        @if(!v)
+        {
+            <h1 style="text-align:center;">no participations !!!!  </h1>
+        }
+
+    </div>
+
+
+</div>
+<br />
+<div style="width:100%; margin-bottom:50px;">
+    <a href="@Url.Action("Edite","Employes",new { id = Model.Matr})" style="width:50%;margin-bottom:50px;" class="btn btn-primary btn-lg pull-left">Edite </a>
+    <a href="@Url.Action("Delete","Employes",new { id = Model.Matr})" style="width:50%;margin-bottom:50px;" class="btn btn-info
+btn-lg pull-right">Delete</a>
+</div>
+
+ 

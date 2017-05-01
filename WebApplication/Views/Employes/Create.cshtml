@@ -1,0 +1,86 @@
+﻿@model DAL.Employe
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    <div class="form-horizontal">
+        <h4>Employe</h4>
+        <hr />
+        <div class="form-group">
+           <LABEL for="Matr" class = "control-label col-md-2">Matricule :</LABEL>
+            <div class="col-md-10">
+                <input type="number" name="Matr" id="Matr" class="form-control" />
+            </div>
+        </div>
+
+       
+        <div class="form-group">
+            <label for="NomE" class = "control-label col-md-2" >Name :</label>
+            <div class="col-md-10">
+                <input type="text" name="NomE" id="NomE" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Poste" class = "control-label col-md-2" >Poste :</label>
+            <div class="col-md-10">
+                <input type="text" name="Poste" id="Poste" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="DateEmb" class = "control-label col-md-2" >Date embauche :</label>
+            <div class="col-md-10">
+                <input type="date" name="DateEmb" id="DateEmb" class="form-control"/>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="Emp_Sup.Matr" class = "control-label col-md-2" >Employe Superieur :</label>
+            <select name="Emp_Sup.Matr" class="form-control">
+                <option>@null</option>
+                @foreach (var item in DAL.Employe.Employes())
+                {
+                    <option>@item.Matr</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Salaire" class = "control-label col-md-2" >Salaire :</label>
+            <div class="col-md-10">
+                <input type="number" name="Salaire" id="Salaire" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Comm" class = "control-label col-md-2" >Comm :</label>
+            <div class="col-md-10">
+                <input type="number" class="form-control" name="Comm" id="Comm"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label fro="_Departement.NumDept" class = "control-label col-md-2" >Departement :</label>
+            <select name="_Departement.NumDept" class="form-control">
+                @foreach (var item in DAL.Departement.Departements())
+                {
+                    <option>@item.NumDept </option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+

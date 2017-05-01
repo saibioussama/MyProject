@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+<div class="row">
+    <div class="col-md-3">
+        <h2>Code projet :</h2>
+    </div>
+    <div class="col-md-3">
+        <input type="text" name="CodeP" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>Nom projet :</h2>
+    </div>
+    <div class="col-md-3">
+        <input type="text" name="NomP" />
+    </div>
+</div>
+
+<input type="submit" value="create pro" />
+}

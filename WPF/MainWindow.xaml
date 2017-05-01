@@ -1,0 +1,48 @@
+﻿<Window x:Class="WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF"
+        mc:Ignorable="d"
+        Title="MainWindow"  >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Name="EmployesBtn" Click="EmployesBtn_Click" Background="DodgerBlue" Margin="10" >
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Text="Employes"
+                       Foreground="White" FontWeight="Bold"
+                       FontSize="28" />
+        </Button>
+
+        <Button Name="DepartementsBtn" Click="DepartementsBtn_Click" Background="YellowGreen" Margin="10" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Text="Departements"
+                       Foreground="White" FontWeight="Bold"
+                       FontSize="28" />
+        </Button>
+
+        <Button Name="ProjectsBtn" Click="ProjectsBtn_Click" Background="OrangeRed" Margin="10" Grid.Row="1">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Text="Projects"
+                       Foreground="White" FontWeight="Bold"
+                       FontSize="28" />
+        </Button>
+
+        <Button Name="ParticipationsBtn" Click="ParticipationsBtn_Click" Background="Gray" Margin="10" Grid.Row="1" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center" Text="participations"
+                       Foreground="White" FontWeight="Bold"
+                       FontSize="28" />
+        </Button>
+
+    </Grid>
+</Window>

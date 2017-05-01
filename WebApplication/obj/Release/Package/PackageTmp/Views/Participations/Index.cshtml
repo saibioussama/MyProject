@@ -1,0 +1,82 @@
+﻿@model List<DAL.Participation>
+@{
+    ViewBag.Title = "Participations";
+}
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+
+
+
+<br />
+<a href="@Url.Action("Create","Participations")" class="btn btn-default pull-right">Add new particiaption ... </a>
+<br />
+<h2>
+    All participations :
+</h2>
+<br />
+
+<table class="table table-hover table-bordered " style="background-color:white;">
+
+    <thead>
+        <tr>
+            <th>
+                id :
+            </th>
+            <th>
+                Employe :
+            </th>
+            <th>
+                Project :
+            </th>
+            <th>
+                Fonction :
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(p => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item._Employe.NomE)
+                    <br />
+                    <a href="@Url.Action("Details","Employes",new { id = @item._Employe.Matr})" class="btn btn-info" target="_blank">Details</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item._Projet.NomP)
+                    <br />
+                    <a href="@Url.Action("Details","Projets",new { id = @item._Projet.CodeP})" class="btn btn-info" target="_blank">Details</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.Fonction)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edite", "participations", new { id = item.Id })" class="btn btn-success">Edite</a>
+                    <a href="@Url.Action("Delete", "participations", new { id = item.Id})" class="btn btn-danger">Delete</a>
+                    <a href="@Url.Action("Details", "participations", new { id = item.Id})" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+@section scripts{
+
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+}

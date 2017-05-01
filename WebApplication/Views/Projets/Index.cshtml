@@ -1,0 +1,64 @@
+﻿@model List<DAL.Projet>
+@{
+    ViewBag.Title = "Projets";
+}
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+
+<br />
+<a href="@Url.Action("Create","Projets")" class="btn btn-default pull-right">Add new project ... </a>
+<br />
+<h2>
+    All project :
+</h2>
+<br />
+
+<table class="table table-hover table-bordered " style="background-color:white;">
+
+    <thead>
+        <tr>
+            <th>
+                Project Code :
+            </th>
+            <th>
+                Project Name :
+            </th>
+            <th>
+
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(p => item.CodeP)
+                </td>
+                <td>
+                    @Html.DisplayFor(p => item.NomP)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edite", "Projets", new { id = item.CodeP })" class="btn btn-success">Edite</a>
+                    <a href="@Url.Action("Delete", "Projets", new { id = item.CodeP })" class="btn btn-danger">Delete</a>
+                    <a href="@Url.Action("Details", "Projets", new { id = item.CodeP })" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+
+</table>
+
+@section scripts{
+
+    <script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
+}

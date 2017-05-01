@@ -1,0 +1,7 @@
+C:\Users\Oussama Saibi\Desktop\MyProject\DAL\bin\Release\DAL.dll.config
+C:\Users\Oussama Saibi\Desktop\MyProject\DAL\bin\Release\DAL.dll
+C:\Users\Oussama Saibi\Desktop\MyProject\DAL\bin\Release\DAL.pdb
+C:\Users\Oussama Saibi\Desktop\MyProject\DAL\bin\Release\MySql.Data.dll
+C:\Users\Oussama Saibi\Desktop\MyProject\DAL\obj\Release\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Oussama Saibi\Desktop\MyProject\DAL\obj\Release\DAL.dll
+C:\Users\Oussama Saibi\Desktop\MyProject\DAL\obj\Release\DAL.pdb

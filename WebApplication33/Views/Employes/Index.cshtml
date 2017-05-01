@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DAL.Employe>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ajout")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Matr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Poste)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateEmb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salaire)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comm)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Matr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Poste)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateEmb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salaire)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comm)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

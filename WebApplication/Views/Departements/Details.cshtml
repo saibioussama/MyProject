@@ -1,0 +1,78 @@
+﻿@model DAL.Departement
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+
+    <div style="background:white;margin-top:100px;">
+
+        <!--Department Logo-->
+        <span style="font-family:'Segoe MDL2 Assets';height:150px;width:150px;border-radius:50%;text-align:center;font-size:80px;position:absolute;top:110px;left:40px;background-color:white;border:10px solid #eee;color:gray;">
+            
+        </span>
+        <!--Departement informations-->
+        <div   style="padding:20px;padding-left:150px;">
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Numero departement :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.NumDept</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Nom Departement :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.NomDept</i></b></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-3">
+                    <h4>Lieu :</h4>
+                </div>
+                <div class="col-md-offset-3">
+                    <h4><b><i>@Model.Lieu</i></b></h4>
+                </div>
+            </div>
+        </div>
+        <div style="margin:70px;"></div>
+        
+        <!--Liste des employes in department-->
+        <h2 style="text-align:center;background-color:#eee;color:gray;padding:30px;margin-left:100px;margin-right:100px;"><b>Liste des employes qui appartient à ce departement</b></h2>
+        <div class="row" style="padding:50px;"  >
+            @foreach (var item in DAL.Employe.Employes())
+            {
+                if (item._Departement.NumDept == Model.NumDept)
+                {
+                    <div class="col-md-2 col-md-offset-1" style="text-align:center; padding:0px;box-shadow:2px 2px 2px gray , -2px -2px 2px gray">
+                        <h3 style="padding:10px;margin:0px;"><b><i>@item.NomE</i></b></h3>
+                        <hr style="margin:0px;"/>
+                        <h4 style="padding:10px;margin:0px;">@item.Poste</h4>
+                        <a href="@Url.Action("Details","Employes",new {id = item.Matr })" target="_blank" class="btn btn-info" style="width:100%;background-color:gray;color:white;"><b>details</b></a>
+                    </div>
+                }
+            }
+        </div> 
+    </div>
+</div>
+
+
+
+
+<br />
+<div style="width:100%;">
+    <a href="@Url.Action("Edite","Departements",new { id = Model.NumDept})" style="width:50%;" class="btn btn-primary btn-lg pull-left">Edite </a>
+    <a href="@Url.Action("Delete","Departements",new { id = Model.NumDept})" style="width:50%;" class="btn btn-info 
+btn-lg pull-right">Delete </a>
+</div>
+
+
+ 
